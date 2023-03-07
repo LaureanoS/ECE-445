@@ -1,2 +1,2 @@
 # ECE-445
-Laureano SAlcines and Jevin Liu
+Laureano Salcines and Jevin Liu
