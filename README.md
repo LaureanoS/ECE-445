@@ -29,4 +29,8 @@ Once we have choosen the voltage divider we need to buy two OP-AMPs and three re
 
 Both OP-AMPs can be implemented in one component, we will choose the:
 
-- Texas Instruments #TLV9154QDYYRQ1 : It has 4 channels in case any one breaks down (we will only use 2), $1.65, ask Jason about what specs are important in the OP-AMPs.
+- Texas Instruments #TLV9154QDYYRQ1 : It has 4 channels in case any one breaks down (we will only use 2), $1.65, ASK JASON WHAT SPECS ARE IMPORTANT FOR THE OP-AMPS.
+
+After choosing the OP-AMPs we also need the three resistors R0, R1 and R2 (ASK JASON WHY DO WE NEED R0)
+
+After calculating what Vref and R2/R1 ratio we will need to convert the +-1Volt to 0-5Volts we know that Vref=-5/3V and R2/R1=3/2, so now we can choose two resistances that meet these ratio. (ASK JASON ABOUT THE SIZE OF THE RESISTANCE I THINK BIG TO REDUCE CURRENT LOADS).
