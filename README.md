@@ -32,6 +32,37 @@ Both OP-AMPs can be implemented in one component, we will choose the:
 
 - Texas Instruments #TLV9154QDYYRQ1 : It has 4 channels in case any one breaks down (we will only use 2), $1.65, ASK JASON WHAT SPECS ARE IMPORTANT FOR THE OP-AMPS.
 
-After choosing the OP-AMPs we also need the three resistors R0, R1 and R2 (ASK JASON WHY DO WE NEED R0)
+After choosing the OP-AMPs we also need the three resistors R0, R1 and R2 (ASK JASON WHY DO WE NEED R0) 
 
-After calculating what Vref and R2/R1 ratio we will need to convert the +-1Volt to 0-5Volts we know that Vref=-5/3V and R2/R1=3/2, so now we can choose two resistances that meet these ratio. (ASK JASON ABOUT THE SIZE OF THE RESISTANCE I THINK BIG TO REDUCE CURRENT LOADS).
+After calculating what Vref and R2/R1 ratio we will need to convert the +-1Volt to 0-5Volts we know that Vref=-5/3V and R2/R1=3/2, so now we can choose two resistances that meet these ratio. (ASK JASON ABOUT THE SIZE OF THE RESISTANCE I THINK BIG TO REDUCE CURRENT LOADS). After asking we knwow that the resistance have to be big but not as much as the voltage divider ones.
+
+03/08/2023
+
+Meeting with Hanyin and Jason to discuss the Ki-Kad and choosing the parts for later shipment.
+
+03/09/2023
+
+Meeting with professor Arne to discuss how the project was getting along.
+
+
+03/20/2023
+
+Choosing the A-D converter and we have chosen:
+
+Starting to make the schematic of the project in KI-Kad, there were some problems for example the A to D converter thta we needed wasn't in Ki-Kad so it had to be exported from ultralibrarian.
+
+After implementing everything it has been added to the design document for later submision
+
+03/24/2023
+
+Adding lots of things that were discussed with Professor Arne to the design document:
+
+ - The tolerance analysis had to be changed
+ 
+ - A schedule has been added to direct us on what to do in eac week
+ 
+ - The cost analysis has been implemented
+ 
+ - More references are being added
+
+Remaking the volatge regulator scheme for something that makes more sence and its easier to work with.
