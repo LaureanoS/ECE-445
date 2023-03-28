@@ -36,6 +36,7 @@ After choosing the OP-AMPs we also need the three resistors R0, R1 and R2 (ASK J
 
 After calculating what Vref and R2/R1 ratio we will need to convert the +-1Volt to 0-5Volts we know that Vref=-5/3V and R2/R1=3/2, so now we can choose two resistances that meet these ratio. (ASK JASON ABOUT THE SIZE OF THE RESISTANCE I THINK BIG TO REDUCE CURRENT LOADS). After asking we knwow that the resistance have to be big but not as much as the voltage divider ones.
 
+
 03/08/2023
 
 Meeting with Hanyin and Jason to discuss the Ki-Kad and choosing the parts for later shipment.
@@ -65,4 +66,48 @@ Adding lots of things that were discussed with Professor Arne to the design docu
  
  - More references are being added
 
-Remaking the volatge regulator scheme for something that makes more sence and its easier to work with.
+Remaking the OP-AMPs schematic for something that makes more sence and its easier to work with, once we have calculated the resistance and Vref needed after doing some calculous it comes out that we need two resistances with a 2.5 ratio between them and an Vref of 5/7 volts. The resistances we have chosen are 10 and 25 Kohms and this are their values:
+
+ -	YAGEO  #RT0603DRE07152KL: 152 Kohms, 0.5%, 50 PPM / C, L=1.6mm, 0.11$
+
+ -	Vishay #CRMA1206AF15M0DKEF: 15Mohms, 0.5%, 100 PPM / C, L=3.18mm, 0.68$
+ 
+ 
+We can get Vref by putting the Vref of the ADC through a voltage divider. 
+
+03/27/2023
+
+Another meeting with Jason and Hanyin to discuss the parts, we are going to work with a DC to DC isolated converter which will isolate the voltage supply for all the components and will power a reference IC which will power the Analog to Digital Converter and will give Vref to the OP-AMPs. We use this reference IC because is far more precise than directly getting the voltage from the DC-DC converter.
+
+Adjusting the resistances of the voltage divider so the Vout will be more aqqurate, we had 15Mohms and 150Kohms which turned he +-100V to +-0.9901V we changed the R2 to 152Kohms so the new output is +-1.003V wich is more aqurate, the prefect resistance value would be 151.5Kohms but there isn't a resistance of that precise value.
+
+The new resistances for the voltage divider are now:
+
+ -	YAGEO  #RP0402BRE0710KL : 10 Kohms, 0.1%, 50 PPM / C, L=1mm, 0.38$
+
+ -	TE Connectivity / Holsworthy  #CPF-A-0805B25KE: 25Kohms, 0.1%, 25 PPM / C, L=2mm, 0.58$
+
+
+
+Working with the schematic in Ki-Kad and choosing new components for the circuit:
+
+We have also chosen the galvanic isolation for which we have chosen a digital isolator:
+ 
+ -	Texas instruments  #ISO7320C: Voltage input: 3V ~ 5.5V , Voltage output: +-15V , 3.46$
+ 
+ For this component after studying the datasheet we know it works better with some capacitors to get rid of small ripples that might appear int the input and output, so we selected three capacitors with that end:
+ 
+ 2 1 uF Capacitors:
+  - TAIYO YUDEN  #TMR107B7105KA-T: 1 µF, ±10%,  1.60mm x 0.80mm, 0.17*2$
+
+ 1 0.1 uF Capacitors:
+  - TAIYO YUDEN  #MSAST1L3YB5104MFNA01: 0.1 µF, ±20%, 1.00mm x 0.50mm, 0.21$
+
+After this the reference IC:
+
+ - Analog Devices  #ADR4550BRZ-R7: Voltage Input:5.1V ~ 15V , Voltage output: 5V , 10.8$
+ 
+  For this component after studying the datasheet we know it works better with some capacitors and inductances to get rid of small ripples that might appear int the input and output, so we selected two capacitors and inductances with that end:
+ 
+ 
+
