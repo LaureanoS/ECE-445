@@ -109,5 +109,15 @@ After this the reference IC:
  
   For this component after studying the datasheet we know it works better with some capacitors and inductances to get rid of small ripples that might appear int the input and output, so we selected two capacitors and inductances with that end:
  
+ 2 2.2 uF Capacitors:
+  - TAIYO YUDEN  #MSRLJ103SB5225MFNA01 : 1.2 µF, ±20%,  1mm x 0.5mm, 0.32*2$
+
+ 2 220 uH Inductance:
+  - TAIYO YUDEN  #LSXNH8080YKL221MJG  : 220 µH, ±20%,  8mm x 8mm, 0.46*2$
  
 
+In order to get the Vref that we need for the OP-AMPs we need a high precision voltage divider that gets us the 5/7 volts we desire, for that we are going to need another two resistance this time with a ratio of 6, and we have chosen:
+
+ -	Panasonic #ERA-8ARW202V   : 2 Kohms, 0.05%, 10 PPM / C, L=3.2mm, 1.57$
+
+ -	Panasonic #ERA-3VRW1202V    : 12 Kohms, 0.05%, 10 PPM / C, L=1.6mm, 0.74$
