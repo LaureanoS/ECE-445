@@ -30,7 +30,7 @@ Once we have choosen the voltage divider we need to buy two OP-AMPs and three re
 
 Both OP-AMPs can be implemented in one component, we will choose the:
 
-- Texas Instruments #TLV9154QDYYRQ1 : It has 4 channels in case any one breaks down (we will only use 2), $1.65, ASK JASON WHAT SPECS ARE IMPORTANT FOR THE OP-AMPS.
+- Texas Instruments #LM358B : It has 4 channels in case any one breaks down (we will only use 2), $1.65, ASK JASON WHAT SPECS ARE IMPORTANT FOR THE OP-AMPS.
 
 After choosing the OP-AMPs we also need the three resistors R0, R1 and R2 (ASK JASON WHY DO WE NEED R0) 
 
@@ -91,23 +91,16 @@ The new resistances for the voltage divider are now:
 
 Working with the schematic in Ki-Kad and choosing new components for the circuit:
 
-We have also chosen the galvanic isolation for which we have chosen a digital isolator:
+We have chosen the galvanic isolation for which we have chosen a digital isolator:
  
  -	Texas instruments  #ISO7320C: Voltage input: 3V ~ 5.5V , Voltage output: +-15V , 3.46$
+
+We have also chosen the DC-DC converter:
+
+ -	Texas instruments  #NMA0512DC: Voltage input: 5V , Voltage output: +-15V , 5.08$
+
  
  For this component after studying the datasheet we know it works better with some capacitors to get rid of small ripples that might appear int the input and output, so we selected three capacitors with that end:
- 
- 2 1 uF Capacitors:
-  - TAIYO YUDEN  #TMR107B7105KA-T: 1 µF, ±10%,  1.60mm x 0.80mm, 0.17*2$
-
- 1 0.1 uF Capacitors:
-  - TAIYO YUDEN  #MSAST1L3YB5104MFNA01: 0.1 µF, ±20%, 1.00mm x 0.50mm, 0.21$
-
-After this the reference IC:
-
- - Analog Devices  #ADR4550BRZ-R7: Voltage Input:5.1V ~ 15V , Voltage output: 5V , 10.8$
- 
-  For this component after studying the datasheet we know it works better with some capacitors and inductances to get rid of small ripples that might appear int the input and output, so we selected two capacitors and inductances with that end:
  
  2 2.2 uF Capacitors:
   - TAIYO YUDEN  #MSRLJ103SB5225MFNA01 : 1.2 µF, ±20%,  1mm x 0.5mm, 0.32*2$
@@ -116,8 +109,45 @@ After this the reference IC:
   - TAIYO YUDEN  #LSXNH8080YKL221MJG  : 220 µH, ±20%,  8mm x 8mm, 0.46*2$
  
 
+After this the reference IC:
+
+ - Analog Devices  #ADR4550BRZ-R7: Voltage Input:5.1V ~ 15V , Voltage output: 5V , 10.8$
+ 
+For this component after studying the datasheet we know it works better with some capacitors to get rid of small ripples that might appear int the input and output, so we selected three capacitors with that end:
+ 
+ 2 1 uF Capacitors:
+  - TAIYO YUDEN  #TMR107B7105KA-T: 1 µF, ±10%,  1.60mm x 0.80mm, 0.17*2$
+
+ 1 0.1 uF Capacitors:
+  - TAIYO YUDEN  #MSAST1L3YB5104MFNA01: 0.1 µF, ±20%, 1.00mm x 0.50mm, 0.21$
+ 
+
 In order to get the Vref that we need for the OP-AMPs we need a high precision voltage divider that gets us the 5/7 volts we desire, for that we are going to need another two resistance this time with a ratio of 6, and we have chosen:
 
  -	Panasonic #ERA-8ARW202V   : 2 Kohms, 0.05%, 10 PPM / C, L=3.2mm, 1.57$
 
  -	Panasonic #ERA-3VRW1202V    : 12 Kohms, 0.05%, 10 PPM / C, L=1.6mm, 0.74$
+
+03/27/2023
+
+ -PCB review with Jason
+ 
+ After looking at the diagram had to add a couple more capacitors on the power to the ADC and changed the DC-DC converter for one wit a +-12 Volts output so the voltage wasn't that close to the limits of the OP-Amps and reference IC.
+ 
+ -So added 2 more 1 uF Capacitors and the new DC-DC converter is:
+ 
+   -	Texas instruments  #NMA0512DC: Voltage input: 5V , Voltage output: +-15V , 5.08$
+  
+  For which we had to change its capacitance and inductance to:
+  
+  2 0.33 uF Capacitors:
+  - TAIYO YUDEN   #TMK107BJ334KA-T : 0.33 µF, ±10%,  1.6mm x 0.8mm, 0.11*2$
+
+ 2 150 uH Inductance:
+  - TAIYO YUDEN  #LSXNH8080YKL221MJG  : 150 µH, ±20%,  8mm x 8mm, 0.46*2$
+
+Also we discussed protecting our ADC in case the circuit is not working as we want, and we are going to use two schottky diodes which are better than normal diodes on the output of the OP-AMPs:
+ The diode that we are going to use:
+ 
+ - ROHM Semiconductor  #RB078RSM10STFTL1   : 150 µH, ±20%,  6.35mm x 4.45mm, 1.55*2$
+
