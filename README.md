@@ -19,6 +19,14 @@ We preperaed for the first meeting with TAs an we needed the the following data:
  First draft of Block Diagram, as the project was pitched the initial block diagram was done at a high level, but it still needed to be worked on.
 
  Your three High-Level Requirements, again as it was a pitch project this was already given in the specifications of the project.
+
+ 1. Voltage: The isolated voltage sensor should be able to measure voltages up to ±100 volts, with a tolerance of 100 millivolts, 0.1% error from value to actual   reading.
+
+ 2.Impedance: To not affect the power circuits that much, input impedance should at least be 10 megaohms.
+
+
+ 3.Sampling Rate: To provide an accurate measurement at any particular time, the sensor needs to sample at at least 10 kilosamples per second.
+
  
  Proof of completion of the lab safety training (in-person students only), uploaded to Canvas. Completed safety course on Canvas.
  
@@ -299,3 +307,67 @@ Before implementing the ADC I had to place the Schottky diodes, the only problem
 
 After this safety feature was implemented we connected the ADC and the Arduino all together without a digital isllation, this was only to secure that the ADC was working properly and to be able to start making the arduino code that was going to be needed. During this time I saw that for some reasion the ADC was only transfering 6 significant bits, and I thought I had broke it, but after further inspenction of the datasheet we realized that when the SPI transfer code was runned, instead of just outputting the 8 significant bits, it first outputed 2 non-significant bits due to wakeup times. The solution to this was running two times the SPI transfer code and getting two variables.
 
+The first one will have 2 null bits and the 6 most significant bits from our output signal and the second one will have the twp leastv significant bits from the output signal and 6 null bits, some code was implemented to get all the significant bits together and be able to measure with high precision:
+
+    digitalWrite(csPin, LOW); // enable ADC
+    delay(0.01); //giving a wakeup time to the ADC
+    uint8_t adcVal1 = SPI.transfer(0);// transfer first 8-bits
+    uint8_t adcVal2 = SPI.transfer(0);// transfer second 8-bits
+    uint8_t adcVal_fin;
+    digitalWrite(csPin, HIGH); // disable ADC
+    uint16_t time3 = micros();
+
+    //Code to output the required 8 bit signal
+    adcVal1 = adcVal1 & 0B00111111;
+    adcVal1 = adcVal1  << 2;
+    adcVal2 = adcVal2 & 0B11000000; 
+    adcVal2 = adcVal2 >> 6;
+    adcVal_fin = adcVal1 | adcVal2;
+
+    //Final calculation
+    float adcVal_fin2 = float(adcVal_fin);
+    float voltage_input = 96.5 - adcVal_fin2 * (float(200)/float(256)); // convert ADC value to the actual voltage input
+
+Once we knew the ADC and the microcontroller were working as desired between them we soldered the Digital Isoltor onto a breakoutboard and then implemented it in the circuit, at the start it looked like it wasn't working but after doing some resoldering we discorvered it was just a soldering issue.
+
+Then we took measurements of:
+
+- Input impedance
+
+- Sampling rates via the micros() function of the arduino which tell how much time has happened since the code was started.
+
+- Impedance between isolated and non-isolated side
+
+- Output of subsystem 1
+
+- Accuracy study taking measurement from -25V to 25V for further investigation in Excel.
+
+After studying all of this results we realized that we had meet all especs except for one:
+
+
+- Input impedance=15Mohms > 10Mohms required
+
+- Sampling rates: The actual printing function of the Arduino was taking away most of our sample rate but the actual voltage sensor could measure up to 12Khz.
+
+- Impedance between isolated and non-isolated side, We measured an infinite impedance which was what we desired
+
+- Output of subsystem 1. The oscylloscope showed that subsystem one was working as required and with excel regresion we made a study to reduce its error to only 0.12%
+
+-Accuracy high-level requirement was not met due to the high error the ADC had, this happened because it was only an 8-bit ADC when we should have used a 16-bit ADC for greater precision eventhough it might have increaseed the project price.
+
+While all of this was being done, preparing the final demo, the final presentation and started the final papers, also updated this workbook.
+
+
+04/28/2023
+
+Final demostration
+
+05/03/2023
+
+Final presentation
+
+Submitted the final papers
+
+05/04/2023
+
+Lab checkout and workbook updating and handing in.
