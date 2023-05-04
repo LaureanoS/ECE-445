@@ -4,9 +4,81 @@ Galvanic Isolated Voltage Sensor
 
 Laureano Salcines and Jevin Liu
 
+02/02/2023
+We met with Jason so he could talk us about the isolated voltage sensor pitched project. We discused the main features of the project and high-level requirements, Jason gave an overview of the working of octocouplers. 
 
-//Update//
 
+02/04/2023
+
+Completed our RFA on the course website
+
+02/06/2023
+
+We preperaed for the first meeting with TAs an we needed the the following data:
+
+ First draft of Block Diagram, as the project was pitched the initial block diagram was done at a high level, but it still needed to be worked on.
+
+ Your three High-Level Requirements, again as it was a pitch project this was already given in the specifications of the project.
+ 
+ Proof of completion of the lab safety training (in-person students only), uploaded to Canvas. Completed safety course on Canvas.
+ 
+02/07/2023
+ 5:40-6:00pm we had our first meeting with Hanyin and Jason all together. The things prepared on the 02/06/2023 were okay but the block diagram still had lots of faults, also we were missing some things that should have been done by the meeting date.
+
+ - One subsystem requirement
+ 
+ 
+ - A rough draft of the entire proposal.
+ 
+ 
+ - We still were needing a group workbook so this repository was created.
+
+02/07/2023
+
+ Worked on the project proposal for our design
+
+
+The problem to be solved was:
+
+  In power electronics, there is a need to sense a voltage through galvanic isolation. In these applications, the output measurements must be accurate and be represented digitally.
+
+And our solution:
+
+Our solution is a small board that can be mounted onto another larger PCB, this small board will carry an analog front end, analog to digital converter, isolated digital interface, a microcontroller and a power supply.
+measure a voltage across an isolated barrier, provide the measurement as a floating point number.
+
+The components we pretended to use were:
+
+- Analog front end
+
+- Analog to digital converter with voltage reference.
+
+- isolated digital interface
+
+- microcontroller
+
+Here we are missing a Power subsytem that will later be implemented with a DC-DC converter.
+
+02/08/2023
+
+meeting in ECEB 2070 to finish up the proposal.
+
+2/9/2023
+ Submision of the project proposal
+
+2/13/2023
+
+Firs weekly meeting with the Hanyin, we discussed how the initial procedure of our project was coming along, and after looking at the project proposal several things were pointed out:
+
+ The block-diagram still had clear big mistakes.
+
+ We didn't have a clear tolerance analysis.
+ 
+ We didn't have clear subsystems requirements, only the high-level ones.
+ 
+So that had to be worked on.
+ 
+ 
 
 03/06/2023
 
